@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EBPlatform.Models.Product>
+
+@{
+    ViewData["Title"] = "ProductPage";
+}
+
+<h2>ProductPage</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PDescribe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PNum)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PDescribe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PNum)
+            </td>
+            <td>
+                <a asp-action="BuyProduct" asp-route-id="@item.Id">Buy</a> |
+                @*<a asp-action="AddToCart" asp-route-id="@item.Id">Add To Cart</a> |*@
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

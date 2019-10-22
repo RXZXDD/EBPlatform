@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EBPlatform.Models.Product>
+
+@{
+    ViewData["Title"] = "BuyConfirm";
+}
+
+<h2>BuyConfirm</h2>
+
+<div>
+    <h4>Cart List</h4>
+    <hr />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PDescribe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PPrice)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PDescribe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PPrice)
+                    </td>
+                    <td>
+                        <a asp-action="kick" asp-route-id="@item.Id">-</a>
+                        @Html.DisplayFor(modelItem => item.PNum)
+                        <a asp-action="add" asp-route-id="@item.Id">+</a>
+                    </td>
+                </tr>
+            }
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Confirm">Confirm</a> |
+    <a asp-action="ClientProduct">Back to Products List</a>
+</div>
